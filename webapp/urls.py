@@ -1,12 +1,14 @@
 from django.urls import path
 
-from webapp.views.tasks import add_view, detail_view, task_update_view
-from webapp.views.base import index_view
+from webapp.views.tasks import TaskDetailView, TaskAddView, TaskUpdateView, TaskDeleteView
+from webapp.views.base import IndexView, IndexRedirectView
 
 urlpatterns = [
-    path('', index_view, name = 'index'),
-    path('task/', index_view),
-    path('task/add/', add_view, name = 'task_add'),
-    path('task/<int:pk>', detail_view, name = 'task_detail'),
-    path('task/<int:pk>/edit', task_update_view, name = 'task_update')
+    path('', IndexView.as_view(), name = 'index'),
+    path('task/', IndexRedirectView.as_view(), name = 'task_index_redirect'),
+    path('task/add/', TaskAddView.as_view(), name = 'task_add'),
+    path('task/<int:pk>', TaskDetailView.as_view(), name = 'task_detail'),
+    path('task/<int:pk>/edit', TaskUpdateView.as_view(), name = 'task_update'),
+    path('task/<int:pk>/delete', TaskDeleteView.as_view(), name='task_delete')
+
 ]
