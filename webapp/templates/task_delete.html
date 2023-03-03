@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container">
 
     <h5>Are you sure want to delete task "{{ task }}"?</h5>
 
@@ -17,8 +18,8 @@
         {% csrf_token %}
 
         <p><input type="submit" value="Confirm"></p>
-        <p><a href="{% url "task_detail" task.pk %}">Cancel</a></p>
+        <p><a href="{% url "task_detail" task.pk %}"  class="btn btn-primary" >Cancel</a></p>
 
     </form>
-
+</div>
 {% endblock %}

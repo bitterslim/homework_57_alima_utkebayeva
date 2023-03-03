@@ -1,18 +1,22 @@
-{%extends 'base.html'%}
-{%block title%} Task{%endblock%}
-{%block menu%}
-      <a href="{% url 'index' %}">To the main page!</a>
-    <a href="{% url 'task_update' task.pk %}">Edit</a>
-{%endblock%}
-{%block content%}
-<div class="container">
-         <h1>Task</h1>
-      <p>Title: {{task.title}}</p>
-      <p>Description: {{task.description}}</p>
-      <p>Date: {{task.date}}</p>
-          <p>Status: {{task.status}}</p>
+{% extends 'base.html' %}
+{% block title %}Task{% endblock %}
+{% block menu %}
+    <a href="{% url 'task_add' %}">Add Task</a>
+    <a href="{% url 'task_update' task.pk %}">Update Task</a>
+{% endblock %}
+{% block content %}
+    <body>
+    <div class="container">
+<div class="card">
+                <h5 class="card-header">{{ task.title }}</h5>
+                <div class="card-body">
+                    <p class="card-title">Date:{{ task.date }}</p>
+                    <p class="card-title">Description:{{ task.description }}</p>
+                    <p class="card-title">Type:{{ task.type }}</p>
+                    <p class="card-title">Status: {{ task.status }}</p>
+                </div>
+            </div>
 
-
-</div>
-
-{%endblock%}
+    </div>
+</body>
+{% endblock %}
